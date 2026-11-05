@@ -1,44 +1,47 @@
 /* PraxisSlot website. Fonts are self-hosted, no external resources. */
 
+/* Inter (SIL Open Font License, see fonts/OFL.txt), variable weight, Latin and Latin Extended. */
 @font-face {
-  font-family: 'Public Sans';
+  font-family: 'Inter';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('fonts/public-sans-latin-400-normal.woff2') format('woff2');
+  src: url('fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: 'Public Sans';
+  font-family: 'Inter';
   font-style: normal;
-  font-weight: 500;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('fonts/public-sans-latin-500-normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('fonts/public-sans-latin-700-normal.woff2') format('woff2');
+  src: url('fonts/inter-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308,
+    U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113,
+    U+2C60-2C7F, U+A720-A7FF;
 }
 
 :root {
-  --ink: #14181f;
-  --ink-2: #2a313c;
-  --muted: #4b5563;
-  --muted-on-dark: #c9cfd8;
-  --page: #f5f6f8;
+  /* Brand colours of PraxisSlot: anthracite, lime only for gaps and what is filled, light
+     green for surfaces about gaps, paper as page. Lime is never text on white. */
+  --ink: #22252a;
+  --ink-2: #2e3238;
+  --ink-3: #33373e;
+  --muted: #5e636b;
+  --muted-on-dark: #c9cdd3;
+  --page: #fbfaf8;
   --surface: #ffffff;
-  --line: #e5e7eb;
-  --accent: #0a7d4f;
-  --accent-hover: #086640;
-  --accent-soft: #e3f4ec;
-  --accent-soft-text: #075c3a;
-  --accent-bright: #2bb673;
-  --mint: #7fe0b0;
-  --radius-s: 10px;
-  --radius-m: 12px;
-  --radius-l: 16px;
+  --surface-subtle: #f3f2ef;
+  --line: #e8e6e1;
+  --accent: #22252a;
+  --accent-hover: #000000;
+  --lime: #b8d94a;
+  --lime-soft: #eef6d6;
+  --lime-border: #d5e8a3;
+  --lime-text: #3f4f14;
+  --radius-s: 8px;
+  --radius-m: 10px;
+  --radius-l: 14px;
   --wrap: 1120px;
 }
 
@@ -57,7 +60,7 @@ body {
   margin: 0;
   background: var(--page);
   color: var(--ink);
-  font-family: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-size: 1.0625rem;
   line-height: 1.6;
 }
@@ -77,7 +80,7 @@ a:hover {
 }
 
 :focus-visible {
-  outline: 3px solid var(--accent-bright);
+  outline: 3px solid var(--ink);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -144,10 +147,21 @@ p {
   font-size: 1.25rem;
   color: inherit;
   text-decoration: none;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 .logo:hover {
   color: inherit;
+}
+.logo-soft {
+  font-weight: 500;
+  color: #8b9099;
+}
+/* On dark surfaces the focus ring is lime (contrast against anthracite). */
+.site-header :focus-visible,
+.hero :focus-visible,
+.dark :focus-visible,
+.contact-box :focus-visible {
+  outline-color: var(--lime);
 }
 .logo svg {
   width: 32px;
@@ -186,7 +200,7 @@ p {
   align-items: center;
   gap: 0.5rem;
   background: var(--ink-2);
-  color: var(--mint);
+  color: var(--lime);
   border-radius: 999px;
   padding: 0.3rem 0.85rem;
   font-size: 0.85rem;
@@ -198,7 +212,7 @@ p {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--accent-bright);
+  background: var(--lime);
 }
 .hero p.lead {
   font-size: 1.2rem;
@@ -206,7 +220,7 @@ p {
   max-width: 34rem;
 }
 .hero h1 span {
-  color: var(--mint);
+  color: var(--lime);
 }
 .actions {
   display: flex;
@@ -227,11 +241,11 @@ p {
   border: 1.5px solid transparent;
 }
 .btn-primary {
-  background: var(--accent-bright);
+  background: var(--lime);
   color: var(--ink);
 }
 .btn-primary:hover {
-  background: var(--mint);
+  background: #cbe56f;
   color: var(--ink);
 }
 .btn-ghost {
@@ -291,7 +305,7 @@ p {
   color: var(--muted);
 }
 .slot.freed {
-  background: repeating-linear-gradient(135deg, #fff 0 8px, #f1f2f4 8px 16px);
+  background: repeating-linear-gradient(135deg, #fff 0 8px, var(--surface-subtle) 8px 16px);
   border: 1.5px dashed #9aa3af;
   border-left-width: 1.5px;
   color: var(--muted);
@@ -300,11 +314,11 @@ p {
   text-decoration: line-through;
 }
 .slot.new {
-  background: var(--accent-soft);
-  border-left-color: var(--accent);
+  background: var(--lime-soft);
+  border-left-color: var(--lime);
 }
 .slot.new small {
-  color: var(--accent-soft-text);
+  color: var(--lime-text);
   font-weight: 500;
 }
 .split {
@@ -365,7 +379,7 @@ section {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-s);
-  background: var(--accent-soft);
+  background: var(--surface-subtle);
   color: var(--accent);
   display: grid;
   place-items: center;
@@ -377,11 +391,11 @@ section {
 }
 .card.featured {
   grid-column: span 2;
-  background: var(--accent-soft);
-  border-color: #bfe3d0;
+  background: var(--lime-soft);
+  border-color: var(--lime-border);
 }
 .card.featured p {
-  color: var(--accent-soft-text);
+  color: var(--lime-text);
 }
 .card.featured .icon {
   background: var(--accent);
@@ -433,18 +447,18 @@ section {
   color: var(--muted-on-dark);
 }
 .dark .eyebrow {
-  color: var(--mint);
+  color: var(--lime);
 }
 .dark .card {
   background: var(--ink-2);
-  border-color: #353d4a;
+  border-color: #3a3e45;
 }
 .dark .card p {
   color: var(--muted-on-dark);
 }
 .dark .card .icon {
-  background: #1e3a2f;
-  color: var(--mint);
+  background: var(--ink-3);
+  color: var(--lime);
 }
 
 /* Emails list */
@@ -467,12 +481,12 @@ section {
   width: 1.15rem;
   height: 1.15rem;
   border-radius: 6px;
-  background: var(--accent-soft)
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%230a7d4f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+  background: var(--surface-subtle)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%2322252a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
     center / 0.9rem no-repeat;
 }
 .check-list.no li::before {
-  background: #f1f2f4
+  background: var(--surface-subtle)
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 5l6 6M11 5l-6 6' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")
     center / 0.85rem no-repeat;
 }
@@ -495,17 +509,17 @@ section {
   margin-bottom: 0.5rem;
 }
 .contact-box p {
-  color: #d6f0e3;
+  color: var(--muted-on-dark);
   margin: 0;
 }
 .contact-box .btn {
-  background: #fff;
-  color: var(--accent-soft-text);
+  background: var(--lime);
+  color: var(--ink);
   justify-self: end;
   word-break: break-all;
 }
 .contact-box .btn:hover {
-  background: var(--accent-soft);
+  background: #cbe56f;
 }
 
 /* Footer */
